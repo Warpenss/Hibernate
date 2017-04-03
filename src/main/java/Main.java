@@ -16,6 +16,16 @@ public class Main {
         session.beginTransaction();
         session.save(products);
         session.getTransaction().commit();
+        session.close();
+
+        products = null;
+
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+        products = session.get(Products.class, 0);
+        System.out.println(products.getName());
+        session.close();
         sessionFactory.close();
+
     }
 }

@@ -3,9 +3,10 @@ package model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Entity (name = "products")
-public class Products {
+public class Products implements Serializable {
     @Id
     @Column (name = "id")
     private int id;
@@ -56,5 +57,16 @@ public class Products {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Products{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", image='" + image + '\'' +
+                ", price=" + price +
+                '}';
     }
 }
